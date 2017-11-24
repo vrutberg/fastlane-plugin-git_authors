@@ -14,7 +14,7 @@ module Fastlane
         output = Actions.sh("git log --format='%aN' | sort | uniq")
 
         authors = output.split("\n")
-        UI.message(authors.join(", "))
+        UI.message("Made with ❤ by " + authors.join(", "))
       end
 
       def self.description
