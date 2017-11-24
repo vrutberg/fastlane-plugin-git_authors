@@ -2,7 +2,19 @@ module Fastlane
   module Actions
     class GitAuthorsAction < Action
       def self.run(params)
-        UI.message("The git_authors plugin is working!")
+        cmd = []
+        cmd << "git"
+        cmd << "log"
+        cmd << "--format='%aN'"
+        cmd << "|"
+        cmd << "sort"
+        cmd << "|"
+        cmd << "uniq"
+
+        output = Actions.sh("git log --format='%aN' | sort | uniq")
+
+        authors = output.split("\n")
+        UI.message(authors.join(", "))
       end
 
       def self.description
