@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'wishie@gmail.com'
 
   spec.summary       = 'List authors of a Git repository'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-git_authors"
+  spec.homepage      = "https://github.com/vrutberg/fastlane-plugin-git_authors"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
