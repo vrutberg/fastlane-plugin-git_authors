@@ -24,7 +24,7 @@ module Fastlane
 
       def self.details
         # Optional:
-        "This plugin gives you a list of all authors of a Git repository"
+        "This plugin gives you a list of all authors of a Git repository with an optional prefix and an optional suffix"
       end
 
       def self.available_options
