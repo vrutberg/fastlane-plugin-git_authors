@@ -2,19 +2,12 @@ module Fastlane
   module Actions
     class GitAuthorsAction < Action
       def self.run(params)
-        cmd = []
-        cmd << "git"
-        cmd << "log"
-        cmd << "--format='%aN'"
-        cmd << "|"
-        cmd << "sort"
-        cmd << "|"
-        cmd << "uniq"
+        prefix = params[:prefix] == nil ? "Made with ❤️  by" : params[:prefix]
+        suffix = params[:suffix] == nil ? "" : params[:suffix]
 
         output = Actions.sh("git log --format='%aN' | sort | uniq")
 
-        authors = output.split("\n")
-        UI.message("Made with ❤ by " + authors.join(", "))
+        UI.message([prefix, output.split("\n").join(", "), suffix].join(" "))
       end
 
       def self.description
@@ -36,11 +29,17 @@ module Fastlane
 
       def self.available_options
         [
-          # FastlaneCore::ConfigItem.new(key: :your_option,
-          #                         env_name: "GIT_AUTHORS_YOUR_OPTION",
-          #                      description: "A description of your option",
-          #                         optional: false,
-          #                             type: String)
+          FastlaneCore::ConfigItem.new(key: :prefix,
+                                  env_name: "GIT_AUTHORS_PREFIX",
+                               description: "A prefix for the list of authors",
+                                  optional: true,
+                                      type: String),
+
+          FastlaneCore::ConfigItem.new(key: :suffix,
+                                  env_name: "GIT_AUTHORS_SUFFIX",
+                               description: "A suffix for the list of authors",
+                                  optional: true,
+                                      type: String)
         ]
       end
 

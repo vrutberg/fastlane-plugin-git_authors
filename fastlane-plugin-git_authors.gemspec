@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.author        = 'Viktor Rutberg'
   spec.email         = 'wishie@gmail.com'
 
-  spec.summary       = 'List all authors of a Git repository'
+  spec.summary       = 'List authors of a Git repository'
   # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-git_authors"
   spec.license       = "MIT"
 
